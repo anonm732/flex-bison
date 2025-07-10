@@ -10,6 +10,10 @@
 "|"     { return ABS; }
 [0-9]+  { yylval = atoi(yytext); return NUMBER; }
 \n      { return EOL; }
+
+"("     { return OP; }
+")"     { return CP; }
+"//".*  
 [ \t]   { }
 .       { printf("Mystery character %c\n", *yytext); }
 %%

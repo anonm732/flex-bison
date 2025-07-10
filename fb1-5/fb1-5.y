@@ -8,6 +8,7 @@ void yyerror(char* s);
 /* declare tokens */
 %token NUMBER
 %token ADD SUB MUL DIV ABS
+%token OP CP
 %token EOL
 %%
 
@@ -27,6 +28,7 @@ factor: term
 
 term: NUMBER
     | ABS term { $$ = $2 >= 0 ? $2 : - $2; }
+    | OP exp CP { $$ = $2; }
     ;
 %%
 int main(int argc, char** argv) {
